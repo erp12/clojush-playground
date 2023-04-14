@@ -22,14 +22,14 @@ clojars.
                                            ;; Clojush's dep on incanter is broken because the transitive dep bctsp-jdk14
                                            ;; is no longer accessible via maven central.
                                            :exclusions  [bouncycastle/bctsp-jdk14]}
-       io.github.erp12/clojush-playground {:WRITE ME}
+       io.github.erp12/clojush-playground {:git/sha "72deacfe157da2134878ed4702a861e1ebc8bcda"}
        }
 ```
 
 Or simply start a REPL with these deps.
 
 ```commandline
-clj -Sdeps '{:deps {clojush/clojush {:mvn/version "LATEST" :exclusions [bouncycastle/bctsp-jdk14]} }}'
+clj -Sdeps '{:deps {clojush/clojush {:mvn/version "LATEST" :exclusions [bouncycastle/bctsp-jdk14]} io.github.erp12/clojush-playground {:git/sha "72deacfe157da2134878ed4702a861e1ebc8bcda"}}}'
 ```
 
 Require the playground namespace in your REPL or script.
@@ -53,12 +53,12 @@ map with keyword keys and the values are lists (aka the stack). The output will 
 state map.
 
 ```clojure
-(exercise-instruction
+(play/exercise-instruction-1
   'boolean_and
   {:boolean (list true false)})
 ;; => {:boolean (false)}
 
-(exercise-instruction-1
+(play/exercise-instruction-1
   'exec_do*count
   {:integer (list 3)
    :exec    (list true)
@@ -69,7 +69,7 @@ state map.
 To evaluate a Push instruction and continue program execution until termination, use the `exercise-instruction-all`.
 
 ```clojure
-(exercise-instruction-full
+(play/exercise-instruction-full
     'exec_do*count
     {:integer (list 3)
      :exec    (list true)
@@ -80,7 +80,7 @@ To evaluate a Push instruction and continue program execution until termination,
 All the intermediate states can be printed using `:print-steps? true` in an map passed as the third argument.
 
 ```clojure
-(exercise-instruction-full
+(play/exercise-instruction-full
     'exec_do*count
     {:integer (list 3)
      :exec    (list true)
