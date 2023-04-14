@@ -26,7 +26,7 @@ clojars.
        }
 ```
 
-Or simply start a REPL with these deps.
+Or simply start a REPL with this 1 line command.
 
 ```commandline
 clj -Sdeps '{:deps {clojush/clojush {:mvn/version "LATEST" :exclusions [bouncycastle/bctsp-jdk14]} io.github.erp12/clojush-playground {:git/sha "72deacfe157da2134878ed4702a861e1ebc8bcda"}}}'
