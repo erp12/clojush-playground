@@ -1,20 +1,22 @@
 # Clojush Playground
 
-The Clojush project has been used as the PushGP implementation for multiple publications and has been used as the
-reference implementation for multiple other PushGP systems. This project provides some simple utilities for exploring
-some implementation details of Clojure which other practitioners who are building their own PushGP system should know.
+The Clojush project has been used as the PushGP implementation for many publications and as the
+reference implementation for multiple other PushGP systems. This project provides some utilities for
+exploring certain implementation details of Clojush which practitioners building their own PushGP 
+system might find useful.
 
-Much of Clojush's development and usage patterns require a copy of the project's source code and knowledge of the 
-project's build system. The playground provides utilities that only assume Clojush is on the class path and allows
+Much of Clojush's development and usage requires a copy of the project's source code and knowledge of the 
+build system. The playground provides utilities that only assume Clojush is on the class path and allows
 users to specify a dependency on Clojush in whatever way they want (including whichever Clojush version).
+This is particularly useful for starting the playground quickly in a REPL without much fuss (see below).
 
 ## Getting Started
 
 Many Clojush versions exist, including many private or one-off versions customized for a specific research effort. The
-playground does not directly depend on Clojush so that user can specify the precise version they would like to explore.
+playground does not directly depend on Clojush so you can specify the precise version you would like to explore.
 
-Add the playground and you version of Clojush to your `deps.edn`. For this example we will use a version of Clojush from
-clojars.
+Add the playground and version of Clojush to your `deps.edn`. For this example we will use the lastest version of 
+Clojush published to Clojars.
 
 ```clojure
 :deps {
@@ -41,11 +43,13 @@ Require the playground namespace in your REPL or script.
 ## Exercising Instructions
 
 One difficult aspect of implementing a PushGP system is creating the many stack instructions. 
-What separates the Push language from other non-turing complete stack machines is the use of an `exec` stack 
-which holds the programs code and can be used to implement self-modifying logic for expression conditional control
-flow, iteration, and other wacky stuff. To assist developers in the writing of `exec` stack instructions (and all
-other instruction) the playground provides utility for running the Clojush instruction on handwritten states. If 
-Clojush is your reference implementation, this can be used to generate unit tests for your PushGP implementation.
+A key feature of the Push langauge is the `exec` stack which holds the programs code and is modified by 
+instructions to express conditional control flow, iteration, and other wacky self-modifying logic.
+
+To assist developers in the writing of the common `exec` stack instructions (or any Clojush instruction)
+the playground provides utilities for running the Clojush instruction on arbirary Push states. If 
+Clojush is your reference implementation, this can be used to generate unit tests for your PushGP
+implementation.
 
 To perform a single step of program execution, use `exercise-instruction-1`.
 The first argument is the instruction's symbol and the second is a Push state in the form of a 
