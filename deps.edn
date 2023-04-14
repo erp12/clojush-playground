@@ -1,0 +1,9 @@
+{
+ :paths   ["src"]
+ :deps    {}
+ :aliases {:clojush {:extra-deps {clojush/clojush   {:mvn/version "3.32.0"
+                                                     ;; Clojush's dep on incanter is broken because the transitive dep bctsp-jdk14
+                                                     ;; is no longer accessible via maven central.
+                                                     :exclusions  [bouncycastle/bctsp-jdk14]}
+                                  incanter/incanter {:mvn/version "1.9.3"}}}}
+ }
